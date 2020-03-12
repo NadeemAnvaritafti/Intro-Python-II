@@ -1,11 +1,14 @@
 # Write a class to hold player information, e.g. what room they are in
 # currently.
+from item import Food, Egg
 
 
 class Player:
     def __init__(self, name, current_room):
         self.name = name
         self.current_room = current_room
+        self.items = []
+        self.strength = 10
 
     def __str__(self):
         return f'{self.name}, {self.current_room}'
@@ -16,3 +19,20 @@ class Player:
             print(self.current_room)
         else:
             print('You cannot move in that direction')
+
+    def show_inventory(self):
+        print('You are holding: ')
+        if len(self.items) == 0:
+            print('--nothing you peasant')
+        else:
+            for item in self.items:
+                print(item.name)
+
+    def eat(self, food_item):
+        if not isinstance(food_item, Food):
+            print(f'You cannot eat {food_item.name}')
+        else:
+            self.strength += food_item.calories
+            print(
+                f'you have eaten {food_item.name}, your strength is now {self.strength}')
+            self.items.remove(food_item)

@@ -10,6 +10,7 @@ class Room:
         self.s_to = None
         self.e_to = None
         self.w_to = None
+        self.items_in_room = []
 
     def __str__(self):
         return_string = "---------"
@@ -32,3 +33,11 @@ class Room:
         if self.w_to:
             exits.append('w')
         return exits
+
+    def show_items_in_room(self):
+        print(f'Items available in the {self.name}:')
+        if len(self.items_in_room) == 0:
+            print('--Currently no items available')
+        else:
+            for item in self.items_in_room:
+                print(item.name)
