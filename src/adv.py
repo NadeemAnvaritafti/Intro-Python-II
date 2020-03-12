@@ -61,14 +61,13 @@ room['narrow'].items_in_room.append(shield)
 room['treasure'].items_in_room.append(sword)
 room['treasure'].items_in_room.append(potion)
 
+# Add Players
+player = Player(input('Please enter your name: '), room['outside'])
+
 #
 # Main
 #
-
 # Make a new player object that is currently in the 'outside' room.
-player = Player(input('Please enter your name: '), room['outside'])
-print(f'Welcome {player.name}! \n')
-
 # Write a loop that:
 # * Prints the current room name
 # * Prints the current description (the textwrap module might be useful here).
@@ -78,6 +77,8 @@ print(f'Welcome {player.name}! \n')
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+# Constants
 valid_directions = ('n', 's', 'e', 'w')
 
 valid_commands = {
@@ -95,6 +96,8 @@ valid_commands = {
     'q': 'quit'
 }
 
+# Functions
+
 
 def show_commands():
     for key, value in valid_commands.items():
@@ -110,10 +113,13 @@ def two_words(string):
         return 'bad command'
 
 
+# Initial Prompts
+print(f'Welcome {player.name}! \n')
 print('Type \'start\' to get started! \n')
 print('How to play:')
 show_commands()
 
+# Beginning of Loop
 while True:
     cmd = input('\n -->  ')
 
